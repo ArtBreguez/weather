@@ -113,8 +113,8 @@ class BayesianRidgeModel(BaseWeatherModel):
         """
         if threshold is None:
             threshold = 0.5
-        mu, sigma2 = self._model.predict(X, return_std=True)
-        sigma = np.maximum(sigma2, 1e-8)
+        mu, sigma = self._model.predict(X, return_std=True)
+        sigma = np.maximum(sigma, 1e-8)
         probs = 1.0 - ndtr((threshold - mu) / sigma)
         return np.clip(probs, 0.0, 1.0)
 

@@ -61,7 +61,7 @@ class WeightedEnsemble:
             else:
                 bs = 1.0
             # Avoid division by zero
-            brier_scores.append(max(bs, 1e-9))
+            brier_scores.append(max(bs, 0.01))
 
         inv_brier = 1.0 / np.array(brier_scores)
         self._weights = inv_brier / inv_brier.sum()

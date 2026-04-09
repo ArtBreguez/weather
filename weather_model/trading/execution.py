@@ -87,23 +87,14 @@ class TradeExecutor:
             slippage_cost = 0.0
 
         net_size = position_size - slippage_cost
-        self._cash -= position_size
 
+        # Deduct full bet upfront; on a win, return net_size stake plus profit.
+        self._cash -= position_size
         if outcome == 1:
             pnl = net_size * (odds - 1.0)
+            self._cash += net_size + pnl  # stake returned + winnings
         else:
-            pnl = -net_size
-
-        self._cash += net_size + pnl  # return net_size stake + profit (or nothing on loss)
-        # On a win the net pnl change from the perspective of cash is: pnl (stake was already deducted)
-        # Cash flow: -position_size (bet) + net_size (stake returned on win) + profit
-        # For a loss: -position_size (bet) + 0 = just the loss
-        # Let's recalculate clearly:
-        self._cash -= net_size  # undo the stake-return we added above
-        if outcome == 1:
-            self._cash += position_size  # return original stake
-            self._cash += pnl            # add profit
-        # On loss, nothing is returned; cash was already reduced by position_size
+            pnl = -net_size  # lost the effective stake (after slippage)
 
         self._pnl_history.append(pnl)
         trade_record = {

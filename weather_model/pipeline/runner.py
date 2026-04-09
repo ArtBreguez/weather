@@ -156,7 +156,10 @@ class FullPipeline:
                     bankroll=self._executor._cash,
                 )
                 # Simulate with random outcome for daily mode
-                opp = {"market_id": f"daily_{_}", "odds": odds, "outcome": int(row["model_prob"] > 0.5)}
+                # Sample a simulated outcome from the model probability (Bernoulli trial)
+                rng2 = np.random.default_rng(int(_ * 1000))
+                sim_outcome = int(rng2.random() < row["model_prob"])
+                opp = {"market_id": f"daily_{_}", "odds": odds, "outcome": sim_outcome}
                 self._executor.execute(opp, size)
 
             stats = self._executor.get_portfolio_stats()

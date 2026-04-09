@@ -43,7 +43,7 @@ class DataPreprocessor:
             iqr = q3 - q1
             lower, upper = q1 - 3 * iqr, q3 + 3 * iqr
             df.loc[(df[col] < lower) | (df[col] > upper), col] = np.nan
-        df[self.numeric_cols] = df[self.numeric_cols].ffill().bfill()
+        df[self.numeric_cols] = df[self.numeric_cols].ffill(limit=3).bfill(limit=3)
         return df
 
     def normalize(self, df: pd.DataFrame, fit: bool = True) -> pd.DataFrame:

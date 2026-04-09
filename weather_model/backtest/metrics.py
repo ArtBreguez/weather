@@ -113,7 +113,7 @@ def max_drawdown(equity_curve: np.ndarray) -> float:
     peak = np.maximum.accumulate(equity_curve)
     # Avoid division by zero on a flat curve
     with np.errstate(invalid="ignore", divide="ignore"):
-        drawdowns = np.where(peak != 0, (equity_curve - peak) / np.abs(peak), 0.0)
+        drawdowns = np.where(peak != 0, (equity_curve - peak) / peak, 0.0)
     return float(np.nanmin(drawdowns))
 
 
