@@ -84,7 +84,7 @@ class RiskParity:
     """
 
     def compute_weights(self, returns_cov_matrix: np.ndarray) -> np.ndarray:
-        """Compute risk parity weights by minimising deviation from equal risk contribution.
+        """Compute risk parity weights by minimizing deviation from equal risk contribution.
 
         Uses scipy.optimize to find the weight vector w such that each asset's
         marginal risk contribution (w_i * (Sigma @ w)_i) is equal.

@@ -5,7 +5,7 @@ from typing import Tuple, Optional
 
 
 class DataPreprocessor:
-    """Cleans, normalizes, and splits weather DataFrames.
+    """Cleans, normalizes (z-score), and splits weather DataFrames.
 
     Stores normalization parameters so inverse transform is possible at inference.
     Uses IQR-based outlier removal to handle sensor errors and transcription mistakes.
