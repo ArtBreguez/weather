@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: weather-model
+Version: 0.1.0
+Summary: Python weather forecasting for Polymarket prediction markets
+Requires-Python: >=3.9
