@@ -183,7 +183,7 @@ class ECMWFFetcher:
 
     ECMWF's ensemble system uses 51 members (1 control + 50 perturbed).
     It is widely regarded as the world's best medium-range forecast model.
-    Singular vectors and stochastic physics parameterisations capture forecast uncertainty.
+    Singular vectors and stochastic physics parameterizations capture forecast uncertainty.
     ECMWF data commands a premium because of its superior skill scores globally.
 
     Args:

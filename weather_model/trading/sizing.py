@@ -7,9 +7,9 @@ from typing import Optional
 class KellyCriterion:
     """Kelly Criterion position sizing for binary prediction markets.
 
-    The Kelly Criterion maximises the long-run growth rate of the bankroll by
+    The Kelly Criterion maximizes the long-run growth rate of the bankroll by
     betting a fraction proportional to the edge. Full Kelly is theoretically
-    optimal but highly volatile; fractional Kelly (25 %) is used in practice to
+    optimal but highly volatile; fractional Kelly (25%) is used in practice to
     reduce variance and guard against model error.
 
     The Kelly fraction for a binary bet is: f = edge / (odds - 1)
@@ -36,8 +36,8 @@ class KellyCriterion:
     def fractional_kelly(self, edge: float, odds: float, fraction: float = 0.25) -> float:
         """Compute fractional Kelly to reduce variance.
 
-        Multiplies full Kelly by ``fraction``. Using 25 % Kelly reduces the
-        standard deviation of returns by 75 % while capturing most of the
+        Multiplies full Kelly by ``fraction``. Using 25% Kelly reduces the
+        standard deviation of returns by 75% while capturing most of the
         expected growth.
 
         Args:

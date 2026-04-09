@@ -11,7 +11,7 @@ class IsotonicCalibrator:
 
     Isotonic regression fits a non-decreasing step function that maps raw
     (uncalibrated) scores to empirical frequencies. It is non-parametric and
-    can correct arbitrary monotone miscalibration, making it more flexible than
+    can correct arbitrary monotonic miscalibration, making it more flexible than
     Platt scaling but requiring more calibration samples.
 
     Args:
